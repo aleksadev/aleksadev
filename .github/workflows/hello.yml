@@ -18,7 +18,11 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # ${{matrix.os}}
+    #strategy:
+    #matrix:
+      #os: [ubuntu-latest, windows-latest, macOS-latest]
+      #node: [6, 8, 20]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,6 +32,11 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+        # Configures the node version used on GitHub-hosted runners
+      #- uses: actions/setup-node@v1
+        #with:
+          # The Node.js version to configure
+          #node-version: ${{ matrix.node }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
